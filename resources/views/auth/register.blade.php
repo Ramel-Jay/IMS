@@ -2,11 +2,55 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
+        <!-- Avatar Url -->
+        <!-- <div>
+            <x-input-label for="avatar_url" :value="__('Avatar')" />
+            <x-text-input id="avatar_url" class="block mt-1 w-full" type="file" name="avatar_url" :value="old('Avatar')" required autofocus autocomplete="avatar_url" />
+            <x-input-error :messages="$errors->get('avatar_url')" class="mt-2" />
+        </div> -->
+        <input type="file" name="avatar_url"/>
+        
+        <!-- first Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="first_name" :value="__('First name')" />
+            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first name')" required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+
+        <!-- Last Name -->
+        <div>
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('Last Name')" required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('Last Name')" class="mt-2" />
+        </div>
+
+        <!-- Gender -->
+        <div>
+            <x-input-label for="gender" :value="__('Gender')" />
+            <x-text-input id="gender" class="block mt-1 w-full" type="text" name="gender" :value="old('Gender')" required autofocus autocomplete="gender" />
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+        </div>
+        
+        <!-- Address -->
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('Address')" required autofocus autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <!-- Phone Number -->
+        <!-- <div>
+            <x-input-label for="phone_number" :value="__('Phone Number')" />
+            <x-text-input id="phone_number" class="block mt-1 w-full" type="number" name="phone_number" :value="old('Phone Number')" required autofocus autocomplete="phone_number" />
+            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+        </div> -->
+        <input type="number" name="phone_number"/>
+
+        <!-- User Type -->
+        <div>
+            <x-input-label for="user_type" :value="__('User')" />
+            <x-text-input id="user_type" class="block mt-1 w-full" type="text" name="user_type" :value="old('User')" required autofocus autocomplete="user_type" />
+            <x-input-error :messages="$errors->get('user_type')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -44,7 +88,7 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <x-primary-button type="submit" class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
