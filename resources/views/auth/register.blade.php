@@ -1,14 +1,14 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Avatar Url -->
-        <!-- <div>
+        <div>
             <x-input-label for="avatar_url" :value="__('Avatar')" />
-            <x-text-input id="avatar_url" class="block mt-1 w-full" type="file" name="avatar_url" :value="old('Avatar')" required autofocus autocomplete="avatar_url" />
+            <x-text-input id="avatar_url" class="block mt-1 w-full" type="file" name="avatar_url" required autofocus />
             <x-input-error :messages="$errors->get('avatar_url')" class="mt-2" />
-        </div> -->
-        <input type="file" name="avatar_url"/>
+        </div>
+        <!-- <input type="file" name="avatar_url"/> -->
         
         <!-- first Name -->
         <div>
@@ -39,12 +39,12 @@
         </div>
 
         <!-- Phone Number -->
-        <!-- <div>
+        <div>
             <x-input-label for="phone_number" :value="__('Phone Number')" />
-            <x-text-input id="phone_number" class="block mt-1 w-full" type="number" name="phone_number" :value="old('Phone Number')" required autofocus autocomplete="phone_number" />
+            <x-text-input id="phone_number" class="block mt-1 w-full" type="number" name="phone_number" required />
             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
-        </div> -->
-        <input type="number" name="phone_number"/>
+        </div>
+        <!-- <input type="number" name="phone_number"/> -->
 
         <!-- User Type -->
         <div>

@@ -35,20 +35,20 @@ class RegisteredUserController extends Controller
             'last_name'         => ['required', 'string', 'max:255'],
             'gender'            => ['required', 'string', 'max:255'],
             'address'           => ['required', 'string', 'max:255'],
-            'phone_number'      => ['required', 'integer', ],
+            'phone_number'      => ['required', 'string', ],
             'user_type'         => ['required', 'string', 'max:255'],
             'email'             => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password'          => ['required', 'confirmed', Rules\Password::defaults()],
-            'avatar_url'        => 'required|file|mimes:jpeg,png,jpg|max:2048'
+            'avatar_url'        => 'required|file|mimes:jpeg,png,jpg'
         ]);
 
-        $imagePath = null;
+        $avatar = null;
         if($request->hasFile('avatar_url')){
-            $imagePath = $request->image_path->store('avatar', 'public');
+            $avatar = $request->avatar_url->store('avatar', 'public');
         }
 
         $user = User::create([
-            'avatar_url'        => $imagePath,
+            'avatar_url'        => $avatar,
             'first_name'        => $request->first_name,
             'last_name'         => $request->last_name,
             'gender'            => $request->gender,
@@ -58,8 +58,6 @@ class RegisteredUserController extends Controller
             'email'             => $request->email,
             'password'          => Hash::make($request->password),
         ]);
-
-        dd($user);
 
         event(new Registered($user));
 
