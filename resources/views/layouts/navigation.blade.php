@@ -16,6 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('inventory')" :active="request()->routeIs('inventory')">
+                        {{ __('Inventory') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -23,8 +30,8 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>
-                                <img src="{{ url('/storage/app/public/'.Auth::user()->avatar_url) }}" alt=""/>
+                            <div class="flex items-center">
+                                <img src="{{ Auth::user()->avatar_url }}" alt="" class="w-10 h-10 rounded-full mr-2"/>
                                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                             </div>
                             <div class="ml-1">
