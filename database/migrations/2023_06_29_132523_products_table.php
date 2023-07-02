@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->bigInteger('bar_code');
-            $table->string('product_name');
-            $table->integer('product_stack');
-            $table->string('product_catigory');
-            $table->text('product_img');
+            $table->string('name');
+            $table->string('brand');
+            $table->string('discription');
+            $table->string('price');
+            $table->integer('stack');
+            $table->string('catigory');
+            $table->text('img');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
