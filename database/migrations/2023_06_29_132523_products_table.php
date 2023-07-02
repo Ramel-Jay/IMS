@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->string('discription');
-            $table->string('price');
+            $table->float('price');
             $table->integer('stack');
             $table->string('catigory');
             $table->text('img');
