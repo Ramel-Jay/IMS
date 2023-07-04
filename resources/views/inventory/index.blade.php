@@ -14,80 +14,83 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                 </button>
             </div>
-            <!-- Modal body -->
-            <div class="p-6 grid grid-cols-2 gap-4">
-                <!-- Bar Code -->
-                <div>
-                    <x-input-label for="bar_code" :value="__('Bar Code')" />
-                    <x-text-input id="bar_code" class="block mt-1 w-full" type="number" name="bar_code" :value="old('bar_code')" required autofocus autocomplete="bar_code" placeholder="68422345"/>
-                    <x-input-error :messages="$errors->get('bar_code')" class="mt-2" />
-                </div>
-                <!-- Product Name -->
-                <div>
-                    <x-input-label for="name" :value="__('Product Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('Product Name')" required autofocus autocomplete="product_name" placeholder="Gatas na Chocho"/>
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                </div>
-                <!-- Product Brand -->
-                <div>
-                    <x-input-label for="brand" :value="__('Brand')" />
-                    <x-text-input id="brand" class="block mt-1 w-full" type="text" name="brand" :value="old('Product Brand')" required autofocus autocomplete="product_brand" placeholder="Bear Brand"/>
-                    <x-input-error :messages="$errors->get('brand')" class="mt-2" />
-                </div>
-                <!-- Product Discription -->
-                <div>
-                    <x-input-label for="discription" :value="__('Discription')" />
-                    <x-text-input id="discription" class="block mt-1 w-full" type="text" name="discription" :value="old('discription')" required autofocus autocomplete="discription" placeholder="350grms"/>
-                    <x-input-error :messages="$errors->get('discription')" class="mt-2" />
-                </div>
+            <form action={{ url('inventory') }} method="POST">
+                @csrf
+                <!-- Modal body -->
+                <div class="p-6 grid grid-cols-2 gap-4">
+                    <!-- Bar Code -->
+                    <div>
+                        <x-input-label for="bar_code" :value="__('Bar Code')" />
+                        <x-text-input id="bar_code" class="block mt-1 w-full" type="number" name="bar_code" :value="old('bar_code')" required autofocus autocomplete="bar_code" placeholder="68422345"/>
+                        <x-input-error :messages="$errors->get('bar_code')" class="mt-2" />
+                    </div>
+                    <!-- Product Name -->
+                    <div>
+                        <x-input-label for="name" :value="__('Product Name')" />
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('Product Name')" required autofocus autocomplete="product_name" placeholder="Gatas na Chocho"/>
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
+                    <!-- Product Brand -->
+                    <div>
+                        <x-input-label for="brand" :value="__('Brand')" />
+                        <x-text-input id="brand" class="block mt-1 w-full" type="text" name="brand" :value="old('Product Brand')" required autofocus autocomplete="product_brand" placeholder="Bear Brand"/>
+                        <x-input-error :messages="$errors->get('brand')" class="mt-2" />
+                    </div>
+                    <!-- Product Discription -->
+                    <div>
+                        <x-input-label for="discription" :value="__('Discription')" />
+                        <x-text-input id="discription" class="block mt-1 w-full" type="text" name="discription" :value="old('discription')" required autofocus autocomplete="discription" placeholder="350grms"/>
+                        <x-input-error :messages="$errors->get('discription')" class="mt-2" />
+                    </div>
 
-                <!-- Product Price -->
-                <div>
-                    <x-input-label for="price" :value="__('Price')" />
-                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('Price')" required autofocus autocomplete="price" placeholder="50.75"/>
-                    <x-input-error :messages="$errors->get('price')" class="mt-2" />
-                </div>
+                    <!-- Product Price -->
+                    <div>
+                        <x-input-label for="price" :value="__('Price')" />
+                        <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('Price')" required autofocus autocomplete="price" placeholder="50.75"/>
+                        <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                    </div>
 
-                <!-- Product Stack -->
-                <div>
-                    <x-input-label for="stack" :value="__('Stack')" />
-                    <x-text-input id="stack" class="block mt-1 w-full" type="number" name="stack" :value="old('Stack')" required autofocus autocomplete="stack" placeholder="350"/>
-                    <x-input-error :messages="$errors->get('stack')" class="mt-2" />
-                </div>
+                    <!-- Product Stack -->
+                    <div>
+                        <x-input-label for="stack" :value="__('Stack')" />
+                        <x-text-input id="stack" class="block mt-1 w-full" type="number" name="stack" :value="old('Stack')" required autofocus autocomplete="stack" placeholder="350"/>
+                        <x-input-error :messages="$errors->get('stack')" class="mt-2" />
+                    </div>
 
-                <!-- Product Catigory -->
-                <div>
-                    <x-input-label for="catigory" :value="__('Catigory')" />
-                    <x-text-input id="catigory" class="block mt-1 w-full" type="text" name="catigory" :value="old('Catigory')" required autofocus autocomplete="catigory" placeholder="Milk"/>
-                    <x-input-error :messages="$errors->get('catigory')" class="mt-2" />
-                </div>
+                    <!-- Product Catigory -->
+                    <div>
+                        <x-input-label for="catigory" :value="__('Catigory')" />
+                        <x-text-input id="catigory" class="block mt-1 w-full" type="text" name="catigory" :value="old('Catigory')" required autofocus autocomplete="catigory" placeholder="Milk"/>
+                        <x-input-error :messages="$errors->get('catigory')" class="mt-2" />
+                    </div>
 
-                    <div class="w-full">
-                        <div class="w-full max-w-2xl p-8 mx-auto bg-gray-200 dark:bg-gray-700 rounded-lg">
-                        <div class="" x-data="imageData()">
-                            <div x-show="previewUrl == ''">
-                            <p class="text-center uppercase font-bold ">
-                                <label for="img" class="cursor-pointer">
-                                    Product Image
-                                </label>
-                                <input type="file" name="img" id="img" class="hidden" @change="updatePreview()">
-                            </p>
-                            </div>
-                            <div x-show="previewUrl !== ''">
-                            <img :src="previewUrl" alt="" class="rounded">
-                            <div class="">
-                                <button type="button" class="" @click="clearPreview()">change</button>
-                            </div>
+                        <div class="w-full">
+                            <div class="w-full max-w-2xl p-8 mx-auto bg-gray-200 dark:bg-gray-700 rounded-lg">
+                            <div class="" x-data="imageData()">
+                                <div x-show="previewUrl == ''">
+                                <p class="text-center uppercase font-bold ">
+                                    <label for="img" class="cursor-pointer">
+                                        Product Image
+                                    </label>
+                                    <input type="file" name="img" id="img" class="hidden" @change="updatePreview()">
+                                </p>
+                                </div>
+                                <div x-show="previewUrl !== ''">
+                                <img :src="previewUrl" alt="" class="rounded">
+                                <div class="">
+                                    <button type="button" class="" @click="clearPreview()">change</button>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="staticModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                <button data-modal-hide="staticModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-            </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="staticModal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                    <button data-modal-hide="staticModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                </div>    
+            </form>
         </div>
     </div>
 </div>

@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::controller(App\Http\Controllers\InventoryController::class)->group(function () {
+        Route::post('inventory', 'store');
     });
 });
 
